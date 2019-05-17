@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UDstoryAdamEva</title>
+</head>
+<body>
+<input type="button" onclick="say()" value="Say">
+<input type="button" onclick="eat()" value="Eat">
+<p id="say"></p>
+<p id="eat"></p>
+<script>
+    const Apple = function (weight) {
+        this.weight=weight;
+
+        this.getWeight=function () {
+            return this.weight;
+        };
+        this.decrease=function () {
+            this.weight--
+        };
+        this.isEmpty= function(){
+            return this.weight <=0;
+        }
+    };
+    const Human = function (name,gender,weight) {
+        this.name =name;
+        this.gender =gender;
+        this.weight =weight;
+
+        this.getWeight=function () {
+            return this.weight;
+        };
+        this.say= function (word) {
+            return word;
+        };
+
+        this.eat=function (Apple) {
+            if(Apple.isEmpty()){
+                alert("Hết táo rồi")
+            }else{
+                Apple.decrease();
+                this.weight++;
+                console.log(Apple.getWeight());
+                console.log(this.getWeight());
+            }
+        }
+    };
+
+    let apple= new Apple(10);
+    let human1= new Human ("Adam", "Male", 70);
+    let human2= new Human ("Eva", "Female", 46);
+    function say(){
+        document.getElementById("say").innerHTML += human1.say("Ăn táo đi em") + "<br>"
+             + human2.say("Ăn táo làm gì, ăn em đây này")+ "<br>";
+    }
+    function eat(){
+        human1.eat(apple);
+        human2.eat(apple);
+        document.getElementById("eat").innerHTML += apple.getWeight()+"<br>"+human1.getWeight()+"<br>"+human2.getWeight()+"<br>";
+    }
+</script>
+</body>
+</html>
